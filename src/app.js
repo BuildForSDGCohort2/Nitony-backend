@@ -1,3 +1,2 @@
-const app = async () => '#BuildforSDG';
-
-export default app;
+const nitony = require('./index')
+nitony()
