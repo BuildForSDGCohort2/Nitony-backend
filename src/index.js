@@ -5,9 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const questionRoutes =  require('./routes/questions')
 const userRoutes = require('./routes/users')
-const productRoutes = require('./routes/products')
 const profileRoutes = require('./routes/profile')
-const orderRoutes = require('./routes/orders')
 const subjectsRoutes = require('./routes/subjects')
 const yearsRoutes = require('./routes/years')
 
@@ -42,8 +40,7 @@ const nitony = async () => {
   await nitonyExpress.use('/api/v1/users',userRoutes )
 
   await nitonyExpress.use('/api/v1/profile',profileRoutes )
-  await nitonyExpress.use('/api/v1/orders',orderRoutes )
-  await nitonyExpress.use('/api/v1/products', productRoutes )
+
   await nitonyExpress.use('/api/v1/subjects', subjectsRoutes)
   await nitonyExpress.use('/api/v1/years', yearsRoutes)
 
