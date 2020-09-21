@@ -8,7 +8,7 @@ const userRoutes = require('./routes/users')
 const profileRoutes = require('./routes/profile')
 const subjectsRoutes = require('./routes/subjects')
 const yearsRoutes = require('./routes/years')
-
+const port = process.env.PORT || 2060
 // cors()
  mongoose.connect("mongodb://localhost:27017/nitonydb", 
  {useNewUrlParser: true},
@@ -19,16 +19,19 @@ nitonyExpress.use(bodyParser.urlencoded({extended: false}))
 nitonyExpress.use(bodyParser.json())
 
 //Allow Cors
-nitonyExpress.use((req, res, next)=>{
-  res.header('Access-Control-Allow-Origin', "*");
-  res.header("Access-Control-Allow_headers",
-  "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "*")
-    return res.status(200).json({})
-  }
-  next();
-})
+// nitonyExpress.use((req, res, next)=>{
+//   res.header('Access-Control-Allow-Origin', "*");
+//   res.header("Access-Control-Allow_headers",
+//   "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//   if (req.method === "OPTIONS") {
+//     res.header("Access-Control-Allow-Methods", "*")
+//     return res.status(200).json({})
+//   }
+//   next();
+// })
+
+nitonyExpress.use(cors())
+
 //Request Routes
 const nitony = async () => {
   await nitonyExpress.get('/api/v1/', (req, res, next)=>{
@@ -60,7 +63,7 @@ const nitony = async () => {
 
   await console.log('#BuildforSDG')
   
-  nitonyExpress.listen(2060);
+  nitonyExpress.listen(port);
 };
 
  module.exports = nitony
