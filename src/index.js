@@ -10,7 +10,7 @@ const subjectsRoutes = require('./routes/subjects')
 const yearsRoutes = require('./routes/years')
 const port = process.env.PORT || 2060
 // cors()
- mongoose.connect("mongodb://localhost:27017/nitonydb", 
+ mongoose.connect("mongodb+srv://admin:admin@cluster0.3ezuq.mongodb.net/nitony?retryWrites=true&w=majority", 
  {useNewUrlParser: true},
  {useUnifiedTopology: true}
  );
